@@ -18,3 +18,14 @@ jobs:
       - name: Rodar análise de segurança
         run: |
           semgrep --config=auto src/ --error
+
+  deploy:
+    name: Deploy (simulado)
+    runs-on: ubuntu-latest
+    needs: security-check
+
+    if: success()
+
+    steps:
+      - name: Deploy simulado
+        run: echo "Deploy realizado com sucesso 🚀"
